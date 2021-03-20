@@ -20,7 +20,7 @@
 
     <div class="bid-card">
       <h3>All Bids</h3>
-      <% @bids.each do |bid| %>
+      <% @bids.order(:amount).reverse.each do |bid| %>
       <ul>
         <li>Brand: <%= bid.user.name %></li>
         <li>Product: <%= bid.product.name %></li>
