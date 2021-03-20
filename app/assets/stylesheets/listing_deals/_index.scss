@@ -1,6 +1,10 @@
 @import "show";
 
 
+.listing-container{
+  display: block;
+}
+
 .listing-details li {
   list-style-type: none;
 }
@@ -15,8 +19,6 @@
 }
 
 .listing-details{
-
-
   display:flex;
   align-items: center;
   text-align: left;
@@ -25,11 +27,6 @@
 }
 
 
-.listing-container{
-  display: block;
-  padding-top: 10px;
-
-}
 
 .listing-container h1{
   font-weight: bold;
@@ -39,7 +36,7 @@
 
 
 .listing-index{
-  display:flex;
+  display:block;
   margin: 10px;
 }
 
@@ -69,7 +66,4 @@
   margin-left: 40px;
 }
 
-.filter-index{
-  padding: 10px 30px 10px 10px;
-  margin-top: 120px;
-}
+
