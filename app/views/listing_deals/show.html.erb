@@ -10,26 +10,35 @@
         <li>Other Requirements: <%= @listing_deal.other_requirements %></li>
       </ul>
   <h3>Bids</h3>
-  <%= render "./bids/new" %>
-  <div class="bid-card">
-    <% @bids.each do |bid| %>
-    <ul>
-      <li>Brand: <%= bid.user.name %></li>
-      <li>Product: <%= bid.product.name %></li>
-      <li>Offer: £<%= bid.amount %></li>
-    </ul>
-    <!-- this isn't funtional as don't have a route. can be replaced by Sara's bid form/show -->
-    <% if current_user == @listing_deal.user %>
-      <%= link_to 'Accept this bid' %>
-    <% end %>
-  <% end %>
-  </div>
+  <% if @listing_deal.bids.pluck('accepted').include?(true) %>
+    <div class="accepted-bid-card">
+      <p>A bid has been accepted for this tender!</p>
+    </div>
+  <% else %>
 
-
-  <div class="listing-deal-show-actions">
+    <!-- only show if no bid has been accpeted -->
     <% if current_user.is_venue == false %>
-      <%= link_to 'Place a bid', new_listing_deal_bid_path(@listing_deal.id), class: "btn btn-primary"  %>
+      <h4>Place a bid</h4>
+      <%= render "./bids/new" %>
     <% end %>
+    <!-- show existing bids -->
+    <div class="bids-container">
+      <% @bids.each do |bid| %>
+        <div class="bid-card">
+          <ul>
+            <li>Brand: <%= bid.user.name %></li>
+            <li>Product: <%= bid.product.name %></li>
+            <li>Offer: £<%= bid.amount %></li>
+            <li>Accepted: <%= bid.accepted %></li>
+          </ul>
+          <% if current_user == @listing_deal.user %>
+            <%= render "./bids/accept" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="listing-deal-show-actions">
     <% if current_user.id == @listing_deal.user.id %>
       <%= link_to 'Edit this listing', edit_listing_deal_path(@listing_deal.id) %>
       <%= link_to 'Delete this listing', listing_deal_path(@listing_deal.id), method: :delete, data: { confirm: 'Are you sure?'} %>
