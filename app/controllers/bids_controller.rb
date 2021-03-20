@@ -9,7 +9,7 @@ class BidsController < ApplicationController
   def create
     @bid = Bid.new(bid_params)
     @bid.listing_deal = @listing_deal
-    @bid.product = @listing_deal.product
+    @bid.product = Product.find(@listing_deal.product_id)
     @bid.user = current_user
     if @bid.save
       redirect_to listing_deal_path(@listing_deal)
