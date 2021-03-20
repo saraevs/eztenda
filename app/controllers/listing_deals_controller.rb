@@ -26,6 +26,9 @@ class ListingDealsController < ApplicationController
 
 
 
+
+
+
   private
 
   def find_listing_deal
