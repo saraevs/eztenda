@@ -1,4 +1,9 @@
 <div class="listing-index">
+  <div class="filter-index">
+    <% if current_user.is_venue == false %>
+      <%= render 'filter' %>
+    <% end %>
+  </div>
   <h1>All Listing Deals</h1>
   <div class="listing-deals">
     <div class="listing-container">
