@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_20_101125) do
+ActiveRecord::Schema.define(version: 2021_03_20_102545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bids", force: :cascade do |t|
+    t.integer "amount"
+    t.text "description"
+    t.boolean "accepted"
+    t.boolean "rejected"
+    t.bigint "product_id", null: false
+    t.bigint "listing_deal_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["listing_deal_id"], name: "index_bids_on_listing_deal_id"
+    t.index ["product_id"], name: "index_bids_on_product_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
+  end
+
+  create_table "listing_deals", force: :cascade do |t|
+    t.integer "min_amount"
+    t.text "other_requirements"
+    t.string "time_period"
+    t.string "volume"
+    t.date "start_date"
+    t.date "end_date"
+    t.date "completed_at"
+    t.bigint "product_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_listing_deals_on_product_id"
+    t.index ["user_id"], name: "index_listing_deals_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +65,9 @@ ActiveRecord::Schema.define(version: 2021_03_20_101125) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bids", "listing_deals"
+  add_foreign_key "bids", "products"
+  add_foreign_key "bids", "users"
+  add_foreign_key "listing_deals", "products"
+  add_foreign_key "listing_deals", "users"
 end
