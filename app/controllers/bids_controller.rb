@@ -1,5 +1,6 @@
 class BidsController < ApplicationController
-  before_action :find_listing_deal, only: [ :new, :create ]
+  before_action :find_listing_deal, only: [ :new, :create, :update ]
+  before_action :find_bid, only: [ :edit, :update ]
 
   def new
     @bid = Bid.new
@@ -17,6 +18,15 @@ class BidsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @bid.accepted = true
+    @bid.save
+    redirect_to listing_deal_path(@listing_deal)
+  end
+
   private
 
   def bid_params
@@ -25,5 +35,9 @@ class BidsController < ApplicationController
 
   def find_listing_deal
     @listing_deal = ListingDeal.find(params[:listing_deal_id])
+  end
+
+  def find_bid
+    @bid = Bid.find(params[:id])
   end
 end
