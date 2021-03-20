@@ -7,12 +7,16 @@
       <li>Product: <%= bid.product.name %></li>
       <li>Offer: £<%= bid.amount %></li>
     </ul>
-    <% if current_user.is_venue && (current_user == @listing_deal.user) %>
+    <!-- this isn't funtional as don't have a route. can be replaced by Sara's bid form/show -->
+    <% if current_user == @listing_deal.user %>
       <%= link_to 'Accept this bid' %>
     <% end %>
   <% end %>
   <% if current_user.is_venue == false %>
     <%= link_to 'Place a bid', new_listing_deal_bid_path(@listing_deal.id), class: "btn btn-primary"  %>
+  <% end %>
+  <% if current_user.id == @listing_deal.user.id %>
+    <%= link_to 'Edit this listing', edit_listing_deal_path(@listing_deal.id) %>
   <% end %>
   <%= link_to 'Back to all Listings', listing_deals_path %>
 </div>
