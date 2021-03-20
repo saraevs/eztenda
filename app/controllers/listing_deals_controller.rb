@@ -9,6 +9,7 @@ class ListingDealsController < ApplicationController
     @product = Product.find(@listing_deal.product_id)
     @bids = @listing_deal.bids
     @bid = Bid.new
+    @accepted_bid = @bids.where("accepted == true")
   end
 
   def new
