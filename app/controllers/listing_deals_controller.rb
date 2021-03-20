@@ -9,6 +9,11 @@ class ListingDealsController < ApplicationController
     @bids = @listing_deal.bids
   end
 
+  def new
+    @listing_deal = ListingDeal.new
+  end
+
+
 
   private
 
