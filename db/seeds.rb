@@ -53,7 +53,9 @@ puts 'creating listing deals...'
     end_date: Date.today + 90,
     volume: '12 barrels',
     product_id: rand(1..10),
-    user_id: rand(1..4)
+    user_id: rand(1..4),
+    product: Faker::Beer.name,
+    category: 'Beer'
     )
 end
 

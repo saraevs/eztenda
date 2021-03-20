@@ -10,7 +10,8 @@
             <div class="listing-deal-card-body">
               <ul>
                 <li><h4><%= link_to listing_deal.user.name, listing_deal_path(listing_deal.id) %></h4></li>
-                <li>Product: <%= listing_deal.product.name %></li>
+                <li>Product: <%= listing_deal.product %></li>
+                <li>Category: <%= listing_deal.category %></li>
                 <li>Volume Required: <%= listing_deal.volume %></li>
                 <li>Start Date: <%= listing_deal.start_date %></li>
                 <li>End Date: <%= listing_deal.end_date %></li>
