@@ -1,5 +1,18 @@
-<div class="bids-container">
-  <!-- BIDS -->
-  <%= render "./bids/index", listing_deal: @listing_deal, bid: @bid %>
+<div class="container">
+  <div class="bids-container">
+    <!-- BIDS -->
+    <%= render "./bids/new" %>
+    <!-- view all existing bids -->
+    <div>
+      <h4>All existing bids</h4>
+      <!-- can all brands see all bids? Or only venues? -->
+      <% @listing_deal.bids.each do |bid| %>
+        <p>
+          <%= "Amount: #{bid.amount}" %> -
+          <%= "Description: #{bid.description}" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
 </div>
 

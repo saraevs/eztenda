@@ -9,17 +9,18 @@ class BidsController < ApplicationController
     @bid = Bid.new(bid_params)
     @bid.listing_deal = @listing_deal
     @bid.product = @listing_deal.product
+    @bid.user = current_user
     if @bid.save
-      redirect_to listing_deal_path(@listing_deal.id)
+      redirect_to listing_deal_path(@listing_deal)
     else
-      render 'listing_deals/show'
+      render :new
     end
   end
 
   private
 
   def bid_params
-    params.require(:bid).permit(:amount)
+    params.require(:bid).permit(:amount, :description)
   end
 
   def find_listing_deal
