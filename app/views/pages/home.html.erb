@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row py-5">
       <div class="col-xs-12 col-sm-6">
-        <h1 class=" banner-heading">A better way for bars and brands to do business.</h1>
-        <p class="mt-4 banner-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente earum quia consequuntur. Facere exercitationem quae laudantium unde, explicabo repellat voluptatem officiis delectus recusandae magnam quisquam corporis? Et doloremque dicta mollitia!</p>
+        <h1 class=" banner-heading">A better way for bars and brands to do business.ß</h1>
+        <p class="mt-4 banner-text">The online auction where bars can tender their listings deals and brands can bid for them.</p>
         <div class="mt-5">
           <%= link_to listing_deals_path do %>
             <button class="btn btn-dark">View listings</button>
@@ -37,7 +37,9 @@
           <div class="card shadow">
             <div class="card-body ml-2">
               <div class="card-text">
-                <h2>Listing</h2>
+                <!-- need link -->
+                <h2><%= link_to listing.user.name %></h2>
+                <!-- we will need to change this to latest bid! -->
                 <p> Current bid: <%= listing.min_amount %></p>
                 <button class="btn btn-primary">Join auction</button>
               </div>

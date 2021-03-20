@@ -7,8 +7,10 @@
     <h1 class="listing-header">Live Listings</h1>
       <div class="row">
         <% @listing_deals.each do |listing_deal| %>
-          <div class="col-4">
+          <% @product = Product.find(listing_deal.product_id) %>
+          <div class="col-4 col-sm-3">
           <div class="listing-deal-card shadow">
+
             <div class="listing-deal-card-body">
               <ul id="list">
                 <li><h4><%= link_to listing_deal.user.name, listing_deal_path(listing_deal.id) %></h4></li>
@@ -19,6 +21,7 @@
                 <li><strong>End:</strong> <%= listing_deal.end_date.strftime("%a %e %b %y") %></li>
                 <li><strong>Minimum Bid:</strong> £<%= listing_deal.min_amount %></li>
                 <li><strong>Other:</strong> <%= listing_deal.other_requirements %></li>
+
               </ul>
             </div>
             </div>
