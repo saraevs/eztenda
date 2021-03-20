@@ -12,7 +12,7 @@
     <% end %>
   <% end %>
   <% if current_user.is_venue == false %>
-    <%= link_to 'Place a bid', new_listing_deal_bid_path(@listing_deal.id)  %>
+    <%= link_to 'Place a bid', new_listing_deal_bid_path(@listing_deal.id), class: "btn btn-primary"  %>
   <% end %>
   <%= link_to 'Back to all Listings', listing_deals_path %>
 </div>
