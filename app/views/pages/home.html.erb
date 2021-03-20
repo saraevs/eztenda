@@ -1,2 +1,8 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<% if current_user %>
+  <%= link_to "User page", current_user %>
+<% else %>
+  <%= link_to "Sign in", new_user_session_path %>
+<% end %>
