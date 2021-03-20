@@ -1,0 +1,3 @@
+<%= simple_form_for [ listing_deal, bid ], method: :patch, url: listing_deal_bid_path(listing_deal, bid) do |f| %>
+  <%= f.button :submit, "Accept this bid", class: 'btn btn-primary' %>
+<% end %>

@@ -6,7 +6,10 @@ class ListingDealsController < ApplicationController
   end
 
   def show
+    @product = Product.find(@listing_deal.product_id)
     @bids = @listing_deal.bids
+    @bid = Bid.new
+    @accepted_bid = @bids.where(accepted: true).first
   end
 
   def new
@@ -47,5 +50,4 @@ class ListingDealsController < ApplicationController
   def listing_deal_params
     params.require(:listing_deal).permit(:product_id, :user_id, :min_amount, :other_requirements, :time_period, :volume, :completed_at)
   end
-
 end

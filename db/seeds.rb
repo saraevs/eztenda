@@ -53,7 +53,22 @@ puts 'creating listing deals...'
     end_date: Date.today + 90,
     volume: '12 barrels',
     product_id: rand(1..10),
-    user_id: rand(1..4)
+    user_id: rand(1..4),
+    product: Faker::Beer.name,
+    category: 'lager'
+    )
+end
+
+5.times do
+  ListingDeal.create(
+    min_amount: rand(100..500),
+    start_date: Date.today,
+    end_date: Date.today + 90,
+    volume: '12 barrels',
+    product_id: rand(1..10),
+    user_id: rand(1..4),
+    product: Faker::Beer.name,
+    category: 'white wine'
     )
 end
 
