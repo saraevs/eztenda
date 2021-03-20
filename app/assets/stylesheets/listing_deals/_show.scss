@@ -25,6 +25,14 @@
   margin: 0;
 }
 
-.venue-header, .tender-container, .bid-container, .accepted-bid-card {
+.venue-header, .tender-container, .bid-container, .accepted-bid-card, .bid-top-stats {
   margin-bottom: 20px;
+}
+
+.bid-top-stats {
+  display: flex;
+}
+
+.bid-top-stats div {
+  margin-right: 10px;
 }
