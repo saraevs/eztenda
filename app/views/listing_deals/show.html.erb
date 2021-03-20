@@ -1,0 +1,12 @@
+<div class="listing-deal-show">
+  <h2><%= @listing_deal.user.name %></h2>
+  <h3>Bids</h3>
+  <% @bids.each do |bid| %>
+    <ul>
+      <li>Brand: <%= bid.user.name %></li>
+      <li>Product: <%= bid.product.name %></li>
+      <li>Offer: £<%= bid.amount %></li>
+    </ul>
+  <% end %>
+  <%= link_to 'Back to all Listings', listing_deals_path %>
+</div>

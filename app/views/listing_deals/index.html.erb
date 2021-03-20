@@ -11,6 +11,7 @@
         <li>Minimum Bid: £<%= listing_deal.min_amount %></li>
         <li>Other Requirements: <%= listing_deal.other_requirements %></li>
       </ul>
+      <%= link_to 'View', listing_deal_path(listing_deal.id) %>
     <% end %>
   </div>
   <%= link_to 'Back to home', root_path %>
