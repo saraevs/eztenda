@@ -1,16 +1,18 @@
+<div class="listing-container">
 <div class="listing-index">
   <div class="filter-index">
     <% if current_user.is_venue == false %>
       <%= render 'filter' %>
     <% end %>
   </div>
-  <h1>All Listing Deals</h1>
   <div class="listing-deals">
-    <div class="listing-container">
+    <h1>All Listing Deals</h1>
+
       <div class="row">
+        <% @listing_deals.each do |listing_deal| %>
           <div class="col-4 col-sm-3">
           <div class="listing-deal-card">
-            <% @listing_deals.each do |listing_deal| %>
+
             <div class="listing-deal-card-body">
               <ul>
                 <li><h4><%= link_to listing_deal.user.name, listing_deal_path(listing_deal.id) %></h4></li>
@@ -22,17 +24,20 @@
                 <li>Other Requirements: <%= listing_deal.other_requirements %></li>
               </ul>
             </div>
+            </div>
           </div>
-        </div>
+        <% end %>
+
       </div>
-      </div>
-    <% end %>
-  </div>
-  <div class="index-page-links">
+    </div>
+
+     <div class="index-page-links">
     <% if current_user.is_venue %>
       <%= link_to 'Create a Listing', new_listing_deal_path %>
     <% end %>
     <%= link_to 'Back to home', root_path %>
+    </div>
   </div>
+
 
 </div>
