@@ -5,6 +5,11 @@
 
 .filter-bar{
   padding: 10px 300px;
-  margin-top: -10px;
+  margin: 0;
   background-color: lightgrey;
+}
+
+.filter-bar a{
+  color: black;
+  opacity: 0.6;
 }

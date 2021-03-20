@@ -55,7 +55,7 @@ puts 'creating listing deals...'
     product_id: rand(1..10),
     user_id: rand(1..4),
     product: Faker::Beer.name,
-    category: 'Beer'
+    category: 'Lager'
     )
 end
 
