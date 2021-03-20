@@ -1,0 +1,2 @@
+class ListingDealsController < ApplicationController
+end
