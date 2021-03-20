@@ -18,8 +18,8 @@
                 <li><h4><%= link_to listing_deal.user.name, listing_deal_path(listing_deal.id) %></h4></li>
                 <li>Product: <%= listing_deal.product.name %></li>
                 <li>Volume Required: <%= listing_deal.volume %></li>
-                <li>Start Date: <%= listing_deal.start_date %></li>
-                <li>End Date: <%= listing_deal.end_date %></li>
+                <li>Start Date: <%= listing_deal.start_date.strftime("%a %e %b %y") %></li>
+                <li>End Date: <%= listing_deal.end_date.strftime("%a %e %b %y") %></li>
                 <li>Minimum Bid: £<%= listing_deal.min_amount %></li>
                 <li>Other Requirements: <%= listing_deal.other_requirements %></li>
               </ul>
