@@ -1,22 +1,27 @@
 @import "show";
 
 
-.listing-deal-card-body li {
+.listing-details li {
   list-style-type: none;
-  margin-left: 0px;
 }
 
 
-.listing-deal-card{
-  background-color: #fff;
+.listing-card{
   margin: 30px;
   padding: 15px;
+  background-color: #fff;
+
+
+}
+
+.listing-details{
+
+
   display:flex;
   align-items: center;
   text-align: left;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 250px;
-
 }
 
 
@@ -54,7 +59,7 @@
 }
 
 .truncate {
-  width: 320px;
+  width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
