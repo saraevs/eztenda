@@ -21,7 +21,14 @@
           <div class="accepted-bid-card">
             <h4>Accepted Bid</h4>
             <p>A bid has been accepted for this tender!</p>
-          </div>
+             <div class="bid-card">
+                <div class="bid-details col-8">
+                  <h5>Offer: £<%= @accepted_bid.amount %></h5>
+                  <p>Brand: <%= @accepted_bid.user.name %></p>
+                  <p>Product: <%= @accepted_bid.product.name %></p>
+                </div>
+              </div>
+            </div>
         <% else %>
           <div class="listing-deal-bid-form">
             <% if current_user.is_venue == false %>
@@ -34,10 +41,9 @@
             <% @bids.order(:amount).reverse.each do |bid| %>
               <div class="bid-card">
                 <div class="bid-details col-8">
-                    <h5>Offer: £<%= bid.amount %></h5>
-                    <p>Brand: <%= bid.user.name %></p>
-                    <p>Product: <%= bid.product.name %></p>
-                  </ul>
+                  <h5>Offer: £<%= bid.amount %></h5>
+                  <p>Brand: <%= bid.user.name %></p>
+                  <p>Product: <%= bid.product.name %></p>
                 </div>
                 <div class="accept-button col-4">
                   <% if current_user == @listing_deal.user %>
