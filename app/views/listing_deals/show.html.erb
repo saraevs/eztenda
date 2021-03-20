@@ -2,7 +2,8 @@
   <h2><%= @listing_deal.user.name %></h2>
   <h3>Details</h3>
     <ul>
-        <li>Product: <%= @listing_deal.product.name %></li>
+        <li>Product: <%= @listing_deal.product %></li>
+        <li>Category: <%= @listing_deal.category %></li>
         <li>Volume Required: <%= @listing_deal.volume %></li>
         <li>Start Date: <%= @listing_deal.start_date %></li>
         <li>End Date: <%= @listing_deal.end_date %></li>
