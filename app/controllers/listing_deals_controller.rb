@@ -6,6 +6,7 @@ class ListingDealsController < ApplicationController
   end
 
   def show
+    @product = Product.find(@listing_deal.product_id)
     @bids = @listing_deal.bids
     @bid = Bid.new
   end
