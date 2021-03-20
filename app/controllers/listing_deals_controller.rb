@@ -32,6 +32,11 @@ class ListingDealsController < ApplicationController
       end
   end
 
+  def destroy
+    @listing_deal.destroy
+    redirect_to listing_deals_path, alert: "Listing deleted"
+  end
+
 
 
 
