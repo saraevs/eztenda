@@ -20,6 +20,7 @@ class ListingDealsController < ApplicationController
       redirect_to listing_deal_path(@listing_deal), alert: "Deal listed successfully"
     else
       render :new
+    end
   end
 
 
