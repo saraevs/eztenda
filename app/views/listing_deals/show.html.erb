@@ -24,16 +24,13 @@
         <% else %> <!---- auction is still going ---->
           <div class="bid-top-stats">
             <div class="highest-bid">
-              <!-- placeholder -->
-              Highest Bid
+              Highest Bid: <strong>£<%= @highest_bid %></strong>
             </div>
             <div class="minimum-bid">
-              <!-- placeholder -->
-              Minimum Bid
+              Minimum Bid: <strong>£<%= @listing_deal.min_amount %></strong>
             </div>
             <div class="bid-count">
-              <!-- placeholder -->
-              Total Bids
+              Total Bids: <strong><%= @bids.count %></strong>
             </div>
           </div>
           <% if current_user.is_venue == false %>
