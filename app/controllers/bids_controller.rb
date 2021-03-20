@@ -23,6 +23,7 @@ class BidsController < ApplicationController
 
   def update
     @bid.accepted = true
+    @bid.save
     redirect_to listing_deal_path(@listing_deal)
   end
 

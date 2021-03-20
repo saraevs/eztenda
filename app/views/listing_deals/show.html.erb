@@ -26,13 +26,14 @@
       <% @bids.each do |bid| %>
         <div class="bid-card">
           <ul>
+            <li>Id: <%= bid.id %> </li>
             <li>Brand: <%= bid.user.name %></li>
             <li>Product: <%= bid.product.name %></li>
             <li>Offer: £<%= bid.amount %></li>
             <li>Accepted: <%= bid.accepted %></li>
           </ul>
           <% if current_user == @listing_deal.user %>
-            <%= render "./bids/accept" %>
+            <%= render "./bids/accept", listing_deal: @listing_deal, bid: bid %>
           <% end %>
         </div>
       <% end %>
