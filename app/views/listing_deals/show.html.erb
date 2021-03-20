@@ -11,6 +11,7 @@
         <li>Other Requirements: <%= @listing_deal.other_requirements %></li>
       </ul>
   <h3>Bids</h3>
+  <%= render "./bids/new" %>
   <div class="bid-card">
     <% @bids.each do |bid| %>
     <ul>
