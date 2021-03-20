@@ -1,6 +1,11 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1 class="mt-5">Welcome back, <%= @user.name %></h1>
+  </div>
 
-<p>name</p>
-<%= @user.email %>
-<%= @user.name %>
+  <% if !current_user.is_venue %>
+    <%= render "user_is_brand" %>
+  <% else %>
+    <%= render "user_is_venue" %>
+  <% end %>
+</div>
