@@ -19,6 +19,7 @@
       <div class="listing-deals-bids">
         <% if @listing_deal.bids.pluck('accepted').include?(true) %>
           <div class="accepted-bid-card">
+            <h4>Accepted Bid</h4>
             <p>A bid has been accepted for this tender!</p>
           </div>
         <% else %>
