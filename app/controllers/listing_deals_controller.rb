@@ -7,6 +7,7 @@ class ListingDealsController < ApplicationController
 
   def show
     @bids = @listing_deal.bids
+    @bid = Bid.new
   end
 
   def new
@@ -47,5 +48,4 @@ class ListingDealsController < ApplicationController
   def listing_deal_params
     params.require(:listing_deal).permit(:product_id, :user_id, :min_amount, :other_requirements, :time_period, :volume, :completed_at)
   end
-
 end
