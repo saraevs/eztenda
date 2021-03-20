@@ -1,3 +1,8 @@
 .listing-deal-show li {
   list-style-type: none;
 }
+
+.listing-deal-show-actions{
+  display:flex;
+  flex-direction: column;
+}
