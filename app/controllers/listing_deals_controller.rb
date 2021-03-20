@@ -1,5 +1,5 @@
 class ListingDealsController < ApplicationController
-  before_action :find_listing_deal, only: [:show, :edit, :destroy]
+  before_action :find_listing_deal, only: [:show, :edit, :update, :destroy]
 
   def index
     @listing_deals = ListingDeal.all
@@ -23,6 +23,14 @@ class ListingDealsController < ApplicationController
     end
   end
 
+  def update
+    @listing_deal.update(listing_deal_params)
+      if @listing_deal.save
+        redirect_to listing_deal_path
+      else
+        render :new
+      end
+  end
 
 
 
