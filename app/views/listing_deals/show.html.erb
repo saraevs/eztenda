@@ -17,43 +17,29 @@
         </ul>
       </div>
       <div class="listing-deals-bids">
-        <% if @listing_deal.bids.pluck('accepted').include?(true) %>
-          <div class="accepted-bid-card">
-            <h4>Accepted Bid</h4>
-            <p>A bid has been accepted for this tender!</p>
-             <div class="bid-card">
-                <div class="bid-details col-8">
-                  <h5>Offer: £<%= @accepted_bid.amount %></h5>
-                  <p>Brand: <%= @accepted_bid.user.name %></p>
-                  <p>Product: <%= @accepted_bid.product.name %></p>
-                </div>
-              </div>
+        <h3>Auction</h3>
+
+        <% if @listing_deal.bids.pluck('accepted').include?(true) %> <!--- auction is over --->
+          <%= render "auction_over", accepted_bid: @accepted_bid %>
+        <% else %> <!---- auction is still going ---->
+          <div class="bid-top-stats">
+            <div class="highest-bid">
+              Highest Bid: <strong>£<%= @highest_bid %></strong>
             </div>
-        <% else %>
-          <div class="listing-deal-bid-form">
-            <% if current_user.is_venue == false %>
-              <h3>Place a bid</h3>
-              <%= render "./bids/new" %>
-            <% end %>
+            <div class="minimum-bid">
+              Minimum Bid: <strong>£<%= @listing_deal.min_amount %></strong>
+            </div>
+            <div class="bid-count">
+              Total Bids: <strong><%= @bids.count %></strong>
+            </div>
           </div>
-          <div class="bid-container">
-            <h3>All Bids</h3>
-            <% @bids.order(:amount).reverse.each do |bid| %>
-              <div class="bid-card">
-                <div class="bid-details col-8">
-                  <h5>Offer: £<%= bid.amount %></h5>
-                  <p>Brand: <%= bid.user.name %></p>
-                  <p>Product: <%= bid.product.name %></p>
-                </div>
-                <div class="accept-button col-4">
-                  <% if current_user == @listing_deal.user %>
-                    <%= render './bids/accept', listing_deal: @listing_deal, bid: bid %>
-                  <% end %>
-                </div>
-              </div>
-             <% end %>
-            </div>
+          <% if current_user.is_venue == false %>
+            <%= render "./bids/new" %>
           <% end %>
+          <% if @listing_deal.user == current_user %>
+            <%= render "all_bids", bids: @bids, listing_deal: @listing_deal %> <!--- if the current user is the venue for this listing --->
+          <% end %>
+        <% end %>
       </div>
       <div class="listing-deal-show-actions">
         <% if current_user.id == @listing_deal.user.id %>
