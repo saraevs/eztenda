@@ -1,11 +1,50 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner-info">
+  <div class="container">
+    <div class="row py-5">
+      <div class="col-xs-12 col-sm-6">
+        <h1 class=" banner-heading">A better way for bars and brands to do business.</h1>
+        <p class="mt-4 banner-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente earum quia consequuntur. Facere exercitationem quae laudantium unde, explicabo repellat voluptatem officiis delectus recusandae magnam quisquam corporis? Et doloremque dicta mollitia!</p>
+        <div class="mt-5">
+          <%= link_to listing_deals_path do %>
+            <button class="btn btn-dark">View listings</button>
+          <% end %>
 
-<h1>Eztenda</h1>
-<%= link_to 'View all Listing Deals', listing_deals_path %>
+          <% if current_user %>
+            <%= link_to current_user do %>
+              <button class="btn btn-light ml-2">Your listings</button>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+              <button class="btn btn-light ml-2">Get started</button>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= image_tag "bartender.png", class: "banner-image" %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<% if current_user %>
-  <%= link_to "User page", current_user %>
-<% else %>
-  <%= link_to "Sign in", new_user_session_path %>
-<% end %>
+<div class="container">
+  <div class="mt-5">
+    <h1 class="text-center">Popular Tenders</h1>
+    <div class="row">
+      <% @listing_sample = ListingDeal.all.sample(3) %>
+      <% @listing_sample.each do |listing| %>
+        <div class="col-4 mt-4">
+          <div class="card shadow">
+            <div class="card-body ml-2">
+              <div class="card-text">
+                <h2>Listing</h2>
+                <p> Current bid: <%= listing.min_amount %></p>
+                <button class="btn btn-primary">Join auction</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

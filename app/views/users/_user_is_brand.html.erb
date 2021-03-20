@@ -3,7 +3,7 @@
   <div class="row mt-2">
     <% @bids.each do |bid| %>
       <div class="col-4 mb-4">
-        <div class="card">
+        <div class="card shadow">
           <div class="card-body">
             <p class="card-text"><%= bid.listing_deal.volume %></p>
             <p class="card-text">Bid: £<%= bid.amount %></p>
