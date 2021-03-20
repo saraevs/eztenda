@@ -1,10 +1,11 @@
+<div class="listing-container">
 <div class="listing-index">
   <h1>All Listing Deals</h1>
   <div class="listing-deals">
-    <div class="container">
+
       <div class="row">
         <% @listing_deals.each do |listing_deal| %>
-          <div class="col-4 col-sm-3">
+          <div class="col-4">
           <div class="listing-deal-card">
             <div class="listing-deal-card-body">
               <ul>
@@ -26,9 +27,8 @@
   </div>
   <div class="index-page-links">
     <% if current_user.is_venue %>
-      <%= link_to 'Create a Listing', new_listing_deal_path %>
+      <%= link_to 'New Listing', new_listing_deal_path, class: "btn btn-primary" %>
     <% end %>
-    <%= link_to 'Back to home', root_path %>
   </div>
-
+ <%= link_to 'Back to home', root_path %>
 </div>
