@@ -23,12 +23,12 @@
           <%= f.input :phone_number,
                       required: true %>
           <%= f.input :address,
-                      required: true %>
+                      required: true,
+                      input_html: { autocomplete: "address" } %>
           <%= f.input :is_venue, as: :boolean,
-                      label: "Are you a venue",
+                      label: "I represent and esthablishment",
                       checked_value: true,
-                      unchecked_value: false,
-                      required: true %>
+                      unchecked_value: false %>
         </div>
 
         <div class="form-actions mb-5">
