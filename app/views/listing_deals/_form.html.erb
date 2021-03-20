@@ -1,10 +1,10 @@
  <%= simple_form_for listing_deal do |f| %>
   <%= f.input :product, placeholder: 'e.g. House white wine'  %>
-  <!-- need to add category field through product -->
+  <%= f.input :category, placeholder: 'Wine, Beer, Spirit, Soft' %>
   <%= f.input :volume, label: 'Estimated volume of product to be sold' %>
   <%= f.input :min_amount, label: 'Minimum Bid' %>
   <%= f.input :other_requirements, label: 'Any other requirements? e.g. specific wholesaler, marketing or POS information' %>
-  <%= f.input :start_date, label: 'Start date for listing period' %>
-  <%= f.input :end_date, label: 'End date for listing period' %>
+  <%= f.input :start_date, as: :date, html5: true, label: 'Start date for listing period' %>
+  <%= f.input :end_date, as: :date, html5: true, label: 'End date for listing period' %>
   <%= f.submit "Save Listing!", class: "btn btn-primary" %>
 <% end %>

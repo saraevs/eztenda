@@ -1,33 +1,38 @@
+<div class="listing-container">
 <div class="listing-index">
-  <h1>All Listing Deals</h1>
+  <div class="filter-index">
+    <% if current_user.is_venue == false %>
+      <%= render 'filter' %>
+    <% end %>
+  </div>
   <div class="listing-deals">
-    <div class="listing-container">
+    <h1>All Listing Deals</h1>
       <div class="row">
+        <% @listing_deals.each do |listing_deal| %>
           <div class="col-4 col-sm-3">
           <div class="listing-deal-card">
-            <% @listing_deals.each do |listing_deal| %>
             <div class="listing-deal-card-body">
               <ul>
                 <li><h4><%= link_to listing_deal.user.name, listing_deal_path(listing_deal.id) %></h4></li>
-                <li>Product: <%= listing_deal.product.name %></li>
+                <li>Product: <%= listing_deal.product %></li>
+                <li>Category: <%= listing_deal.category %></li>
                 <li>Volume Required: <%= listing_deal.volume %></li>
-                <li>Start Date: <%= listing_deal.start_date %></li>
-                <li>End Date: <%= listing_deal.end_date %></li>
+                <li>Start Date: <%= listing_deal.start_date.strftime("%a %e %b %y") %></li>
+                <li>End Date: <%= listing_deal.end_date.strftime("%a %e %b %y") %></li>
                 <li>Minimum Bid: £<%= listing_deal.min_amount %></li>
                 <li>Other Requirements: <%= listing_deal.other_requirements %></li>
               </ul>
             </div>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
-      </div>
-    <% end %>
+    </div>
+     <div class="index-page-links">
+      <% if current_user.is_venue %>
+        <%= link_to 'New Listing', new_listing_deal_path, class: "btn btn-primary" %>
+      <% end %>
+      <%= link_to 'Back to home', root_path %>
+    </div>
   </div>
-  <div class="index-page-links">
-    <% if current_user.is_venue %>
-      <%= link_to 'Create a Listing', new_listing_deal_path %>
-    <% end %>
-    <%= link_to 'Back to home', root_path %>
-  </div>
-
 </div>

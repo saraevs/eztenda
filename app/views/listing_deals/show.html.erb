@@ -2,41 +2,42 @@
   <h2><%= @listing_deal.user.name %></h2>
   <h3>Details</h3>
     <ul>
-        <li>Product: <%= @listing_deal.product.name %></li>
+        <li>Product: <%= @listing_deal.product %></li>
+        <li>Category: <%= @listing_deal.category %></li>
         <li>Volume Required: <%= @listing_deal.volume %></li>
-        <li>Start Date: <%= @listing_deal.start_date %></li>
-        <li>End Date: <%= @listing_deal.end_date %></li>
+        <li>Start Date: <%= @listing_deal.start_date.strftime("%a %e %b %y") %></li>
+        <li>End Date: <%= @listing_deal.end_date.strftime("%a %e %b %y") %></li>
         <li>Minimum Bid: £<%= @listing_deal.min_amount %></li>
         <li>Other Requirements: <%= @listing_deal.other_requirements %></li>
       </ul>
-  <h3>Bids</h3>
-  <% if @listing_deal.bids.pluck('accepted').include?(true) %>
-    <div class="accepted-bid-card">
-      <p>A bid has been accepted for this tender!</p>
-    </div>
-  <% else %>
-
-    <!-- only show if no bid has been accpeted -->
-    <% if current_user.is_venue == false %>
-      <h4>Place a bid</h4>
-      <%= render "./bids/new" %>
-    <% end %>
-    <!-- show existing bids -->
-    <div class="bids-container">
-      <% @bids.each do |bid| %>
-        <div class="bid-card">
+  <div class="listing-deals-bids">
+    <% if @listing_deal.bids.pluck('accepted').include?(true) %>
+      <div class="accepted-bid-card">
+        <p>A bid has been accepted for this tender!</p>
+      </div>
+    <% else %>
+      <div class="listing-deal-bid-form">
+        <% if current_user.is_venue == false %>
+          <h3>Place a bid</h3>
+          <%= render "./bids/new" %>
+        <% end %>
+      </div>
+      <div class="bid-card">
+        <h3>All Bids</h3>
+        <% @bids.order(:amount).reverse.each do |bid| %>
           <ul>
             <li>Brand: <%= bid.user.name %></li>
             <li>Product: <%= bid.product.name %></li>
             <li>Offer: £<%= bid.amount %></li>
           </ul>
+          <!-- this isn't funtional as don't have a route. can be replaced by Sara's bid form/show -->
           <% if current_user == @listing_deal.user %>
-            <%= render "./bids/accept", listing_deal: @listing_deal, bid: bid %>
+            <%= link_to 'Accept this bid' %>
           <% end %>
+         <% end %>
         </div>
       <% end %>
-    </div>
-  <% end %>
+  </div>
   <div class="listing-deal-show-actions">
     <% if current_user.id == @listing_deal.user.id %>
       <%= link_to 'Edit this listing', edit_listing_deal_path(@listing_deal.id) %>
