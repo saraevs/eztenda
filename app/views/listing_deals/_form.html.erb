@@ -1,5 +1,6 @@
  <%= simple_form_for listing_deal do |f| %>
   <%= f.input :product, placeholder: 'e.g. House white wine'  %>
+  <%= f.input :category, placeholder: 'Wine, Beer, Spirit, Soft' %>
   <!-- need to add category field through product -->
   <%= f.input :volume, label: 'Estimated volume of product to be sold' %>
   <%= f.input :min_amount, label: 'Minimum Bid' %>
