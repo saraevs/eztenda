@@ -1,0 +1,17 @@
+<!-- only displayed if the current user of the listing is the venue who created the tender -->
+<div class="bid-container">
+  <% bids.order(:amount).reverse.each do |bid| %>
+    <div class="bid-card">
+      <div class="bid-details col-8">
+        <h5>Offer: £<%= bid.amount %></h5>
+        <p>Brand: <%= bid.user.name %></p>
+        <p>Product: <%= bid.product.name %></p>
+      </div>
+      <div class="accept-button col-4">
+        <% if current_user == listing_deal.user %>
+          <%= render './bids/accept', listing_deal: listing_deal, bid: bid %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

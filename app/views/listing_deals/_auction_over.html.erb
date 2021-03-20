@@ -1,0 +1,10 @@
+<div class="accepted-bid-card">
+  <p>This auction is over, and a bid has been accepted!</p>
+  <div class="bid-card">
+    <div class="bid-details col-8">
+      <h5>Offer: £<%= accepted_bid.amount %></h5>
+      <p>Brand: <%= accepted_bid.user.name %></p>
+      <p>Product: <%= accepted_bid.product.name %></p>
+    </div>
+  </div>
+</div>
