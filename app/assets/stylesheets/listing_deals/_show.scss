@@ -6,3 +6,25 @@
   display:flex;
   flex-direction: column;
 }
+
+.bid-container {
+  margin-top: 20px;
+}
+
+.tender-container ul {
+  list-style: none;
+}
+
+.venue-header {
+  background-color: $brand-primary;
+  padding: 10px 15px;
+  color: #fff;
+}
+
+.venue-header h1 {
+  margin: 0;
+}
+
+.venue-header, .tender-container, .bid-container {
+  margin-bottom: 20px;
+}
