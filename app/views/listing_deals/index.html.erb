@@ -1,27 +1,27 @@
 <div class="listing-container">
 <div class="listing-index">
   <div class="filter-index">
-    <% if current_user.is_venue == false %>
       <%= render 'filter' %>
-    <% end %>
   </div>
   <div class="listing-deals">
-    <h1>All Listing Deals</h1>
+    <h1 class="listing-header">Live Listings</h1>
       <div class="row">
         <% @listing_deals.each do |listing_deal| %>
           <% @product = Product.find(listing_deal.product_id) %>
           <div class="col-4 col-sm-3">
-          <div class="listing-deal-card">
+          <div class="listing-deal-card shadow">
+
             <div class="listing-deal-card-body">
-              <ul>
+              <ul id="list">
                 <li><h4><%= link_to listing_deal.user.name, listing_deal_path(listing_deal.id) %></h4></li>
-                <li>Product: <%= @product.name %></li>
-                <li>Category: <%= @product.category %></li>
-                <li>Volume Required: <%= listing_deal.volume %></li>
-                <li>Start Date: <%= listing_deal.start_date.strftime("%a %e %b %y") %></li>
-                <li>End Date: <%= listing_deal.end_date.strftime("%a %e %b %y") %></li>
-                <li>Minimum Bid: £<%= listing_deal.min_amount %></li>
-                <li>Other Requirements: <%= listing_deal.other_requirements %></li>
+                <li class="truncate"><strong>Product:</strong> <%= listing_deal.product %></li>
+                <li><strong>Category:</strong> <%= listing_deal.category %></li>
+                <li><strong>Volume:</strong> <%= listing_deal.volume %></li>
+                <li><strong>Start:</strong> <%= listing_deal.start_date.strftime("%a %e %b %y") %></li>
+                <li><strong>End:</strong> <%= listing_deal.end_date.strftime("%a %e %b %y") %></li>
+                <li><strong>Minimum Bid:</strong> £<%= listing_deal.min_amount %></li>
+                <li><strong>Other:</strong> <%= listing_deal.other_requirements %></li>
+
               </ul>
             </div>
             </div>
@@ -29,11 +29,12 @@
         <% end %>
       </div>
     </div>
+
+  </div>
      <div class="index-page-links">
       <% if current_user.is_venue %>
         <%= link_to 'New Listing', new_listing_deal_path, class: "btn btn-primary" %>
       <% end %>
-      <%= link_to 'Back to home', root_path %>
     </div>
-  </div>
+
 </div>
