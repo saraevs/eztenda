@@ -24,11 +24,12 @@
       </div>
       </div>
 
-  </div>
+
   <div class="index-page-links">
     <% if current_user.is_venue %>
       <%= link_to 'New Listing', new_listing_deal_path, class: "btn btn-primary" %>
     <% end %>
+  </div>
   </div>
  <%= link_to 'Back to home', root_path %>
 </div>
