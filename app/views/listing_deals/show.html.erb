@@ -10,27 +10,32 @@
         <li>Minimum Bid: £<%= @listing_deal.min_amount %></li>
         <li>Other Requirements: <%= @listing_deal.other_requirements %></li>
       </ul>
-  <h3>Bids</h3>
-  <%= render "./bids/new" %>
-  <div class="bid-card">
-    <% @bids.each do |bid| %>
-    <ul>
-      <li>Brand: <%= bid.user.name %></li>
-      <li>Product: <%= bid.product.name %></li>
-      <li>Offer: £<%= bid.amount %></li>
-    </ul>
-    <!-- this isn't funtional as don't have a route. can be replaced by Sara's bid form/show -->
-    <% if current_user == @listing_deal.user %>
-      <%= link_to 'Accept this bid' %>
+  <div class="listing-deals-bids">
+    <div class="listing-deal-bid-form">
+      <% if current_user.is_venue == false %>
+        <h3>Place a bid</h3>
+        <%= render "./bids/new" %>
+      <% end %>
+    </div>
+
+
+    <div class="bid-card">
+      <h3>All Bids</h3>
+      <% @bids.each do |bid| %>
+      <ul>
+        <li>Brand: <%= bid.user.name %></li>
+        <li>Product: <%= bid.product.name %></li>
+        <li>Offer: £<%= bid.amount %></li>
+      </ul>
+      <!-- this isn't funtional as don't have a route. can be replaced by Sara's bid form/show -->
+      <% if current_user == @listing_deal.user %>
+        <%= link_to 'Accept this bid' %>
+      <% end %>
     <% end %>
-  <% end %>
+    </div>
   </div>
 
-
   <div class="listing-deal-show-actions">
-    <% if current_user.is_venue == false %>
-      <%= link_to 'Place a bid', new_listing_deal_bid_path(@listing_deal.id), class: "btn btn-primary"  %>
-    <% end %>
     <% if current_user.id == @listing_deal.user.id %>
       <%= link_to 'Edit this listing', edit_listing_deal_path(@listing_deal.id) %>
       <%= link_to 'Delete this listing', listing_deal_path(@listing_deal.id), method: :delete, data: { confirm: 'Are you sure?'} %>
