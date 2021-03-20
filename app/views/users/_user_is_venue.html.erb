@@ -1,1 +1,15 @@
 <p>should only see this if the user is a venue</p>
+<% @listing_deals.each do |deal| %>
+  <% @product = Product.find(deal.product_id) %>
+  <div class="col-4 mb-4">
+    <div class="card shadow">
+      <div class="card-body">
+        <p class="card-text">Volume: <%= deal.volume %> of <%= @product.name %></p>
+        <p class="card-text">Current bid: <%= deal.min_amount %></p>
+        <%= link_to listing_deal_path(deal) do %>
+          <button class="btn btn-primary">Details</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

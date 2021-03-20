@@ -7,8 +7,8 @@
       <div class="tender-container">
       <h2>Tender Details</h2>
         <ul>
-          <li>Product: <%= @listing_deal.product %></li>
-          <li>Category: <%= @listing_deal.category %></li>
+          <li>Product: <%= @product.name %></li>
+          <li>Category: <%= @product.category %></li>
           <li>Volume Required: <%= @listing_deal.volume %></li>
           <li>Start Date: <%= @listing_deal.start_date.strftime("%a %e %b %y") %></li>
           <li>End Date: <%= @listing_deal.end_date.strftime("%a %e %b %y") %></li>

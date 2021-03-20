@@ -9,13 +9,14 @@
     <h1>All Listing Deals</h1>
       <div class="row">
         <% @listing_deals.each do |listing_deal| %>
+          <% @product = Product.find(listing_deal.product_id) %>
           <div class="col-4 col-sm-3">
           <div class="listing-deal-card">
             <div class="listing-deal-card-body">
               <ul>
                 <li><h4><%= link_to listing_deal.user.name, listing_deal_path(listing_deal.id) %></h4></li>
-                <li>Product: <%= listing_deal.product %></li>
-                <li>Category: <%= listing_deal.category %></li>
+                <li>Product: <%= @product.name %></li>
+                <li>Category: <%= @product.category %></li>
                 <li>Volume Required: <%= listing_deal.volume %></li>
                 <li>Start Date: <%= listing_deal.start_date.strftime("%a %e %b %y") %></li>
                 <li>End Date: <%= listing_deal.end_date.strftime("%a %e %b %y") %></li>
