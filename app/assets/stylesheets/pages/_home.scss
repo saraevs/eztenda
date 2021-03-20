@@ -5,12 +5,26 @@
 
 .banner-heading {
   font-weight: 700;
+  font-size: 42px;
+  width: 400px;
 }
 
 .banner-text {
   color: white;
+  width: 450px;
+  font-size: 20px;
 }
 
 .banner-image {
-  height: 400px;
+  height: 350px;
+}
+
+
+.auction-link a:hover{
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.card-body .btn:hover{
+  opacity: 0.7;
 }

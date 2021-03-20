@@ -9,6 +9,8 @@ class ListingDealsController < ApplicationController
     @product = Product.find(@listing_deal.product_id)
     @bids = @listing_deal.bids
     @bid = Bid.new
+    @accepted_bid = @bids.where(accepted: true).first
+    @highest_bid = @bids.empty? ? 0 : @bids.order("amount DESC").limit(1).first.amount
   end
 
   def new
@@ -38,7 +40,6 @@ class ListingDealsController < ApplicationController
     @listing_deal.destroy
     redirect_to listing_deals_path, alert: "Listing deleted"
   end
-
 
   private
 

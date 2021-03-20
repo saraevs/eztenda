@@ -6,3 +6,33 @@
   display:flex;
   flex-direction: column;
 }
+
+.bid-container {
+  margin-top: 20px;
+}
+
+.tender-container ul {
+  list-style: none;
+}
+
+.venue-header {
+  background-color: $brand-primary;
+  padding: 10px 15px;
+  color: #fff;
+}
+
+.venue-header h1 {
+  margin: 0;
+}
+
+.venue-header, .tender-container, .bid-container, .accepted-bid-card, .bid-top-stats {
+  margin-bottom: 20px;
+}
+
+.bid-top-stats {
+  display: flex;
+}
+
+.bid-top-stats div {
+  margin-right: 10px;
+}

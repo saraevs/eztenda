@@ -1,19 +1,69 @@
 @import "show";
 
 
-.listing-deal-card-body li {
+.listing-container{
+  display: block;
+}
+
+.listing-details li {
   list-style-type: none;
 }
 
 
-.listing-deal-card{
-  margin-top: 10px;
+.listing-card{
+  margin: 30px;
+  padding: 15px;
+  background-color: #fff;
+
+
 }
 
-.listing-container{
+.listing-details{
+  display:flex;
+  align-items: center;
+  text-align: left;
+  justify-content: flex-start;
+  min-height: 250px;
+}
+
+
+
+.listing-container h1{
+  font-weight: bold;
+  font-size: 26px;
+  margin-top: 20px;
+}
+
+
+.listing-index{
+  display:block;
   margin: 10px;
 }
 
-.listing-index{
-  display:flex;
+.listing-index a:hover{
+  opacity: 0.6;
+  text-decoration: none;
 }
+
+.index-page-links{
+  margin-left: 100px;
+
+}
+
+#list{
+  margin: 0px;
+  padding: 0px;
+}
+
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.listing-header{
+  margin-left: 40px;
+}
+
+
