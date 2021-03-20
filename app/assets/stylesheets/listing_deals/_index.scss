@@ -1,0 +1,11 @@
+@import "show";
+
+
+.listing-deal-card-body li {
+  list-style-type: none;
+}
+
+.index-page-links{
+  display:flex;
+  flex-direction: column;
+}
