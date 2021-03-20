@@ -7,6 +7,7 @@ class ListingDealsController < ApplicationController
 
   def show
     @bids = @listing_deal.bids
+    @bid = Bid.new
   end
 
   def new
