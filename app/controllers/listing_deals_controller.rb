@@ -38,10 +38,6 @@ class ListingDealsController < ApplicationController
   end
 
 
-
-
-
-
   private
 
   def find_listing_deal

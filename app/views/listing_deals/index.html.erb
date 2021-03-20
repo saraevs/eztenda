@@ -3,7 +3,7 @@
   <div class="listing-deals">
     <% @listing_deals.each do |listing_deal| %>
       <ul>
-        <li><h4><%= listing_deal.user.name %></h4></li>
+        <li><h4><%= link_to listing_deal.user.name, listing_deal_path(listing_deal.id) %></h4></li>
         <li>Product: <%= listing_deal.product.name %></li>
         <li>Volume Required: <%= listing_deal.volume %></li>
         <li>Start Date: <%= listing_deal.start_date %></li>
@@ -11,7 +11,6 @@
         <li>Minimum Bid: £<%= listing_deal.min_amount %></li>
         <li>Other Requirements: <%= listing_deal.other_requirements %></li>
       </ul>
-      <%= link_to 'View', listing_deal_path(listing_deal.id) %>
     <% end %>
   </div>
   <div class="index-page-links">
