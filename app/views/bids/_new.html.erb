@@ -4,8 +4,14 @@
     <%= f.error_notification %>
     <%= f.input :amount,
                 hint: 'Must be higher than the minimum bid',
-                required: true %>
-    <%= f.input :description %>
+                required: true,
+                label: false,
+                placeholder: 'e.g. £500',
+                class: 'form-inline' %>
+    <%= f.input :description,
+                label: false,
+                placeholder: 'Any extras?',
+                class: 'form-inline' %>
     <div class="form-actions">
       <%= f.button :submit, "Place bid", class: 'btn btn-primary' %>
     </div>
