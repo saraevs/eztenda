@@ -5,6 +5,7 @@
 .listing-deal-show-actions{
   display:flex;
   flex-direction: column;
+  margin-top: 40px;
 }
 
 .bid-container {
@@ -38,5 +39,9 @@
 }
 
 .show-card-content{
-  padding: 30px 50px 50px 50px;
+  padding: 30px 70px 40px 50px;
+}
+
+.listing-deals-bids{
+  padding-top: 20px;
 }
