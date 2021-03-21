@@ -6,6 +6,7 @@
   <div class="listing-deals">
     <h1 class="listing-header">Live Listings</h1>
       <div class="row">
+        <% if params[:category] %>
         <% @listing_deals.each do |listing_deal| %>
           <% @product = Product.find(listing_deal.product_id) %>
           <div class="col-4 col-sm-3">
@@ -38,3 +39,5 @@
     </div>
 
 </div>
+
+<% raise %>

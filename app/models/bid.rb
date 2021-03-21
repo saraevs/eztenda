@@ -7,7 +7,7 @@ class Bid < ApplicationRecord
   validates :listing_deal, presence: true
   validates :user, presence: true
   validates :amount, presence: true, numericality: { only_integer: true }
-  validate :amount_cannot_be_less_than_min_amount
+  # validate :amount_cannot_be_less_than_min_amount
 
   def amount_cannot_be_less_than_min_amount
     min_amount = ListingDeal.find(listing_deal_id).min_amount

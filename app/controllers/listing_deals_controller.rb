@@ -2,7 +2,12 @@ class ListingDealsController < ApplicationController
   before_action :find_listing_deal, only: [:show, :edit, :update, :destroy]
 
   def index
-    @listing_deals = ListingDeal.all
+    if params[:category]
+      @product = Product.find(listing_deal.product_id)
+      @listing_deals = ListingDeal.where()
+    else
+      @listing_deals = ListingDeal.all
+    end
   end
 
   def show

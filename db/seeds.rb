@@ -9,7 +9,8 @@
 require 'faker'
 require 'date'
 
-
+categories =  ['Beer', 'Larger', 'White Wine', 'Red Wine', 'Champagne', 'Soft Drink', 'Spirit']
+puts categories
 
 puts 'creating products...'
 
@@ -53,6 +54,7 @@ puts 'creating listing deals...'
     end_date: Date.today + 90,
     volume: '12 barrels',
     product_id: rand(1..10),
+    category: categories.sample(),
     user_id: rand(1..4),
     )
 end
@@ -66,6 +68,7 @@ puts '...'
     end_date: Date.today + 90,
     volume: '12 barrels',
     product_id: rand(1..10),
+    category: categories.sample(),
     user_id: rand(1..4),
     )
 end
