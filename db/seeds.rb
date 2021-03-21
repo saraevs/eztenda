@@ -23,11 +23,12 @@ end
 puts 'creating venues...'
 
 4.times do |i|
-  User.create(
+  user = User.create(
     name: Faker::Restaurant.name,
     is_venue: true,
     email: Faker::Internet.email,
     address: Faker::Address.full_address,
+    phone_number: '0123456789',
     password: 'Password1'
     )
 end
@@ -40,6 +41,7 @@ puts 'creating brands...'
     is_venue: false,
     email: Faker::Internet.email,
     address: Faker::Address.full_address,
+    phone_number: '0123456789',
     password: 'Password1'
     )
 end
@@ -90,7 +92,7 @@ description = [
 
 
 10.times do
-  Bid.create({
+  Bid.create!({
     product_id: rand(1..10),
     user_id: rand(5..8),
     listing_deal_id: rand(1..5),
