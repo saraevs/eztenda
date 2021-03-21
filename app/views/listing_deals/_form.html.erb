@@ -1,6 +1,9 @@
  <%= simple_form_for listing_deal do |f| %>
-  <%= f.input :product, placeholder: 'e.g. House white wine'  %>
-  <%= f.input :category, placeholder: 'Category e.g. lager, white wine, soft drinks' %>
+  <%= f.input :category,
+              placeholder: 'Category e.g. lager, white wine, soft drinks',
+              collection: ['Beer', 'Cider', 'White Wine', 'Red Wine', 'Champagne', 'Soft Drinks', 'Spirits'],
+              default: 'Beer'
+  %>
   <%= f.input :volume, label: 'Estimated volume of product to be sold' %>
   <%= f.input :min_amount, label: 'Minimum Bid' %>
   <%= f.input :other_requirements, label: 'Any other requirements? e.g. specific wholesaler, marketing or POS information' %>

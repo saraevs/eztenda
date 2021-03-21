@@ -9,7 +9,31 @@
 require 'faker'
 require 'date'
 
+categories = ['Beer', 'Cider', 'White Wine', 'Red Wine', 'Champagne', 'Soft Drinks', 'Spirits']
 
+puts 'creating testing users'
+
+harry = User.create({
+  name: 'Harry',
+  email: 'harry@example.com',
+  is_venue: false,
+  password: 'test123',
+  password_confirmation: 'test123',
+  phone_number: '0123456789',
+  address: Faker::Address.full_address
+})
+puts "created #{harry.name} with password: #{harry.password}"
+
+jack = User.create({
+  name: 'Jack Daniels',
+  email: 'jack@example.com',
+  is_venue: true,
+  password: 'test123',
+  password_confirmation: 'test123',
+  phone_number: '0123456789',
+  address: Faker::Address.full_address
+})
+puts "created #{jack.name} with password: #{jack.password}"
 
 puts 'creating products...'
 
@@ -56,6 +80,7 @@ puts 'creating listing deals...'
     volume: '12 barrels',
     product_id: rand(1..10),
     user_id: rand(1..4),
+    category: categories.sample()
     )
 end
 
@@ -69,6 +94,7 @@ puts '...'
     volume: '12 barrels',
     product_id: rand(1..10),
     user_id: rand(1..4),
+    category: categories.sample()
     )
 end
 
