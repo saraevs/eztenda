@@ -1,15 +1,22 @@
-<h2>Your listings</h2>
-<% @listing_deals.each do |deal| %>
-  <% @product = Product.find(deal.product_id) %>
-  <div class="col-4 mb-4">
-    <div class="card shadow">
-      <div class="card-body">
-        <p class="card-text">Volume: <%= deal.volume %> of <%= @product.name %></p>
-        <p class="card-text">Current bid: <%= deal.min_amount %></p>
-        <%= link_to listing_deal_path(deal) do %>
-          <button class="btn btn-primary">Details</button>
-        <% end %>
+<h2 class="mb-3">Active tenders</h2>
+<div class="active-tenders mb-3">
+
+</div>
+<h2 class="mb-3">Agreed deals</h2>
+<div class="agreed-deals mb-3">
+  <% @listing_deals.each do |deal| %>
+    <% @product = Product.find(deal.product_id) %>
+    <div class="col-4 mb-4 listing-card">
+      <div class="card shadow">
+        <div class="card-body">
+          <p class="card-text">Volume: <%= deal.volume %> of <%= @product.name %></p>
+          <p class="card-text">Current bid: <%= deal.min_amount %></p>
+          <%= link_to listing_deal_path(deal) do %>
+            <button class="btn btn-primary">Details</button>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
+
