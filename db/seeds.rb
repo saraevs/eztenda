@@ -54,10 +54,10 @@ puts 'creating listing deals...'
     volume: '12 barrels',
     product_id: rand(1..10),
     user_id: rand(1..4),
-    product: Faker::Beer.name,
-    category: 'lager'
     )
 end
+
+puts '...'
 
 5.times do
   ListingDeal.create(
@@ -67,8 +67,6 @@ end
     volume: '12 barrels',
     product_id: rand(1..10),
     user_id: rand(1..4),
-    product: Faker::Beer.name,
-    category: 'white wine'
     )
 end
 
