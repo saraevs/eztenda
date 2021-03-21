@@ -8,7 +8,26 @@
       <h2>Tender Details</h2>
         <ul>
           <li>Product: <%= @product.name %></li>
-          <li>Category: <%= @product.category %></li>
+          <li>Category: <%= @product.category %>
+            <% case @product.category %>
+            <% when'Beer' %>
+              <i class="fas fa-beer"></i>
+            <% when 'Lager' %>
+              <i class="fas fa-beer"></i>
+            <% when 'Cider' %>
+              <i class="fas fa-beer"></i>
+            <% when 'White wine' %>
+              <i class="far fa-wine-glass-alt"></i>
+            <% when 'Red wine' %>
+              <i class="fas fa-wine-glass-alt"></i>
+            <% when 'Champagne' %>
+              <i class="fal fa-glass-champagne"></i>
+            <% when 'Soft drinks' %>
+              <i class="fas fa-cocktail"></i>
+            <% when 'Spirits' %>
+              <i class="fas fa-cocktail"></i>
+            <% end %>
+          </li>
           <li>Volume Required: <%= @listing_deal.volume %></li>
           <li>Start Date: <%= @listing_deal.start_date.strftime("%a %e %b %y") %></li>
           <li>End Date: <%= @listing_deal.end_date.strftime("%a %e %b %y") %></li>
