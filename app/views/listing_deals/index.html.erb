@@ -14,7 +14,7 @@
               <ul id="list">
                 <li><h4><%= link_to listing_deal.user.name, listing_deal_path(listing_deal.id) %></h4></li>
                 <li><strong>Category:</strong> <%= listing_deal.category %></li>
-                  <% case @listing_deal.category %>
+                  <% case listing_deal.category %>
                     <% when'Beer' %>
                       <i class="fas fa-beer"></i>
                     <% when 'Lager' %>
