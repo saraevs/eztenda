@@ -83,7 +83,7 @@ description = [
   "Another £200 if you sell over 500 bottles",
   "Our very own branded glasses",
   "Free merchandise",
-  "We can also offer you an extra £300 if you sell over 1000 bottles",
+  " ",
   "Free stock for employees",
   "We'll throw in some free mixers as well!",
   "If you sell as much as expected, we will throw in another £400"
