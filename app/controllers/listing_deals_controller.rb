@@ -20,9 +20,11 @@ class ListingDealsController < ApplicationController
   def create
     @listing_deal = ListingDeal.new(listing_deal_params)
     @listing_deal.user = current_user
+    @listing_deal.product_id = 1
     if @listing_deal.save
       redirect_to listing_deal_path(@listing_deal), alert: "Deal listed successfully"
     else
+      raise
       render :new
     end
   end
@@ -48,6 +50,6 @@ class ListingDealsController < ApplicationController
   end
 
   def listing_deal_params
-    params.require(:listing_deal).permit(:product_id, :user_id, :min_amount, :other_requirements, :time_period, :volume, :completed_at)
+    params.require(:listing_deal).permit(:product_id, :user_id, :min_amount, :other_requirements, :start_date, :end_date, :volume)
   end
 end
