@@ -20,21 +20,25 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container tenders">
   <div class="mt-5">
-    <h1 class="text-center">Popular Tenders</h1>
+    <h1 class="text-center tender-text">Latest Tenders</h1>
     <div class="row">
-      <% @listing_sample = ListingDeal.all.sample(3) %>
-      <% @listing_sample.each do |listing| %>
+      <% @listing_top = ListingDeal.last(3) %>
+
+
+      <% @listing_top.each do |listing| %>
         <div class="col-4 mt-4">
           <div class="card shadow">
             <div class="card-body ml-2">
               <div class="card-text">
-                <!-- need link -->
-                <h2 class="auction-link"><%= link_to listing.user.name %></h2>
+
+                <h2><%= link_to listing.user.name, listing_deal_path(listing.id) %></h2>
                 <!-- we will need to change this to latest bid! -->
                 <p> Current bid: <%= listing.min_amount %></p>
-                <button class="btn btn-primary">Join auction</button>
+                <!-- need link -->
+                <%= link_to 'Join Auction', listing_deal_path(listing.id), class: 'btn btn-primary' %>
+
               </div>
             </div>
           </div>
@@ -56,6 +60,12 @@
         <p>Secures distribution for drinks brands</p>
          <p>Easy and intuitive, welcome to Eztenda!</p>
       </div>
+      <div class="marketing-link">
+        <%= link_to listing_deals_path do %>
+          <button class="btn btn-dark">View listings</button>
+        <% end %>
+      </div>
+
       </div>
   </div>
 
