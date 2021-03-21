@@ -10,7 +10,7 @@ class ListingDealsController < ApplicationController
     @bids = @listing_deal.bids
     @bid = Bid.new
     @accepted_bid = @bids.where(accepted: true).first
-    @highest_bid = @bids.empty? ? 0 : @bids.order("amount DESC").limit(1).first.amount
+    @highest_bid = @bids.order("amount DESC").limit(1).first
   end
 
   def new
