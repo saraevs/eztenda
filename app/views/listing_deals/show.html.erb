@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container show-page">
   <div class="row py-5">
-    <div class="col-12">
+    <div class="col-xs-12 show-card shadow">
       <div class="venue-header">
         <h1><%= @listing_deal.user.name %></h1>
       </div>
@@ -37,7 +37,6 @@
       </div>
       <div class="listing-deals-bids mb-3">
         <h3>Auction</h3>
-
         <% if @listing_deal.bids.pluck('accepted').include?(true) %> <!--- auction is over --->
           <%= render "auction_over", accepted_bid: @accepted_bid %>
         <% else %> <!---- auction is still going ---->
@@ -52,23 +51,23 @@
               <div class="highest-bidder">
                 (<strong><%= @highest_bid.user.name %></strong> bid on <%= @highest_bid.created_at.strftime("%a %e %b %y") %>)
               </div>
+              <% if current_user.is_venue == false %>
+                <%= render "./bids/new" %>
+              <% end %>
+              <% if @listing_deal.user == current_user %>
+                <%= render "all_bids", bids: @bids, listing_deal: @listing_deal %> <!--- if the current user is the venue for this listing --->
+              <% end %>
             <% end %>
           </div>
-          <% if current_user.is_venue == false %>
-            <%= render "./bids/new" %>
-          <% end %>
-          <% if @listing_deal.user == current_user %>
-            <%= render "all_bids", bids: @bids, listing_deal: @listing_deal %> <!--- if the current user is the venue for this listing --->
-          <% end %>
-        <% end %>
+          <div class="listing-deal-show-actions">
+            <% if current_user.id == @listing_deal.user.id %>
+              <%= link_to 'Edit this listing', edit_listing_deal_path(@listing_deal.id) %>
+              <%= link_to 'Delete this listing', listing_deal_path(@listing_deal.id), method: :delete, data: { confirm: 'Are you sure?'} %>
+            <% end %>
+            <%= link_to 'Back to all listings', listing_deals_path %>
+          </div>
+        </div>
       </div>
-      <div class="listing-deal-show-actions">
-        <% if current_user.id == @listing_deal.user.id %>
-          <%= link_to 'Edit this listing', edit_listing_deal_path(@listing_deal.id) %>
-          <%= link_to 'Delete this listing', listing_deal_path(@listing_deal.id), method: :delete, data: { confirm: 'Are you sure?'} %>
-        <% end %>
-        <%= link_to 'Back to all listings', listing_deals_path %>
-      </div>
-    </div>
+
   </div>
 </div>
