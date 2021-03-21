@@ -2,7 +2,7 @@
   <%= f.input :category,
               placeholder: 'Category e.g. lager, white wine, soft drinks',
               collection: ['Beer', 'Cider', 'White Wine', 'Red Wine', 'Champagne', 'Soft Drinks', 'Spirits'],
-              default: 'Beer'
+              selected: 'Beer'
   %>
   <%= f.input :volume, label: 'Estimated volume of product to be sold' %>
   <%= f.input :min_amount, label: 'Minimum Bid' %>
