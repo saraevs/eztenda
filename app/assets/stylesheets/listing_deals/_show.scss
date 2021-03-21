@@ -17,7 +17,7 @@
 
 .venue-header {
   background-color: $brand-primary;
-  padding: 10px 15px;
+  padding: 20px 25px;
   color: #fff;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .venue-header, .tender-container, .bid-container, .accepted-bid-card, .bid-top-stats {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .bid-top-stats {
@@ -35,4 +35,8 @@
 
 .bid-top-stats div {
   margin-right: 10px;
+}
+
+.show-card-content{
+  padding: 30px 50px 50px 50px;
 }
