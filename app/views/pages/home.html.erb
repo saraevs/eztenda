@@ -3,23 +3,14 @@
   <div class="container">
 
     <div class="row py-5">
-      <div class="col-xs-12 col-sm-6">
-        <h1 class=" banner-heading">A better way for bars and brands to do business.</h1>
+      <div class="col-xs-12 col-sm-6 banner">
+        <h1 class=" banner-heading">A great deal better</h1>
         <p class="mt-4 banner-text">The online auction where bars can tender their listings deals and brands can bid for them.</p>
         <div class="mt-5">
           <%= link_to listing_deals_path do %>
-            <button class="btn btn-dark">View listings</button>
+            <a href="#about"><button class="btn btn-dark">How it Works</button></a>
           <% end %>
 
-          <% if current_user %>
-            <%= link_to current_user do %>
-              <button class="btn btn-light ml-2">Your listings</button>
-            <% end %>
-          <% else %>
-            <%= link_to new_user_session_path do %>
-              <button class="btn btn-light ml-2">Get started</button>
-            <% end %>
-          <% end %>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6">
@@ -52,3 +43,24 @@
     </div>
   </div>
 </div>
+  <div class="marketing-info">
+      <div class="container marketing">
+    <div class="row py-5">
+      <div class="col-xs-12 col-sm-6">
+          <h1 class="marketing-heading" id="about">A better way for bars and brands to do business</h1>
+      <div class="mt-4 marketing-text">
+
+        <p>Listing deals between bars and drinks brands are essential.</p>
+        <p>Eztenda is an online autction where bars can openly tender their listings deals and drinks brands can bid for them.</p>
+        <p>Unlocks revenue for bar managers</p>
+        <p>Secures distribution for drinks brands</p>
+         <p>Easy and intuitive, welcome to Eztenda!</p>
+      </div>
+      </div>
+  </div>
+
+
+    </div>
+
+  </div>
+

@@ -1,12 +1,20 @@
 // Specific CSS for your home-page
-.banner-info {
+.banner-info, .marketing-info{
   background-color: $brand-primary;
 }
 
-.banner-heading {
+.banner-heading, .marketing-heading {
   font-weight: 700;
   font-size: 42px;
+
+}
+
+.banner-heading {
   width: 400px;
+}
+
+.banner{
+  padding: 100px 10px;
 }
 
 .banner-text {
@@ -27,4 +35,23 @@
 
 .card-body .btn:hover{
   opacity: 0.7;
+}
+
+.marketing{
+
+  margin-top: 100px;
+  position: relative;
+  width: 100%;
+  padding: 150px 0px 200px 0px;
+
+}
+
+.marketing-text {
+  color: white;
+  width: 600px;
+  font-size: 20px;
+}
+
+.marketing-heading{
+  padding-bottom: 30px;
 }
