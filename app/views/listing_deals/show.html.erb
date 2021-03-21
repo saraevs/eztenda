@@ -31,8 +31,8 @@
             </h5>
           </li>
           <li>From <strong> <%= @listing_deal.start_date.strftime("%a %e %b %y") %></strong> to <strong><%= @listing_deal.end_date.strftime("%a %e %b %y") %></strong></li>
-          <li>Minimum Bid: £<%= @listing_deal.min_amount %></li>
-          <li>Other Requirements: <%= @listing_deal.other_requirements %></li>
+          <li>Minimum Bid: <strong>£<%= @listing_deal.min_amount %></strong></li>
+          <li>Other Requirements: <%= @listing_deal.other_requirements.nil? ? "None" : @listing_deal.other_requirements %></li>
         </ul>
       </div>
       <div class="listing-deals-bids mb-3">
@@ -42,15 +42,17 @@
           <%= render "auction_over", accepted_bid: @accepted_bid %>
         <% else %> <!---- auction is still going ---->
           <div class="bid-top-stats">
-            <div class="highest-bid">
-              Highest Bid: <strong class="btn btn-primary">£<%= @highest_bid %></strong>
-            </div>
-            <div class="minimum-bid">
-              Minimum Bid: <strong>£<%= @listing_deal.min_amount %></strong>
-            </div>
-            <div class="bid-count">
+            <div class="bid-count mr-5">
               Total Bids: <strong><%= @bids.count %></strong>
             </div>
+            <% if !@highest_bid.nil? %>
+              <div class="highest-bid mr-3">
+                Highest Bid:  <strong class="highest-bid-value">£<%= @highest_bid.amount %></strong>
+              </div>
+              <div class="highest-bidder">
+                (<strong><%= @highest_bid.user.name %></strong> bid on <%= @highest_bid.created_at.strftime("%a %e %b %y") %>)
+              </div>
+            <% end %>
           </div>
           <% if current_user.is_venue == false %>
             <%= render "./bids/new" %>

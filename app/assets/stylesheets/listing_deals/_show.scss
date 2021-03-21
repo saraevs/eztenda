@@ -39,6 +39,13 @@
   padding: 30px;
 }
 
-.bid-top-stats div {
-  margin-right: 10px;
+.highest-bid-value {
+  background-color: $brand-primary;
+  color: #fff;
+  // font-size: 20px;
+  padding: 5px 15px;
+}
+
+.bid-count {
+  vertical-align: center;
 }
