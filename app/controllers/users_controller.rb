@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   def show
     if !@user.is_venue
       @bids = Bid.where(user_id: @user.id)
-      @active_bids = Bid.joins(:listing_deal).where(user_id: @user.id).where.not(listing_deal: { completed_at: nil })
-      @past_bids = Bid.joins(:listing_deal).where(user_id: @user.id).where(listing_deal: { completed_at: nil })
+      @active_bids = Bid.joins(:listing_deal).where(user_id: @user.id).where(listing_deal: { completed_at: nil })
+      @accepted_bids = Bid.where(user_id: @user.id, accepted: true)
     else
       @listing_deals = ListingDeal.where(user_id: @user.id)
       @accepted_listings = ListingDeal.where(user_id: @user.id).where.not(completed_at: nil)
