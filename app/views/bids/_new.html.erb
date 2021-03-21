@@ -1,4 +1,5 @@
 <div class="form-inputs">
+  <h4>Place your bid</h4>
   <%= simple_form_for [ @listing_deal, @bid ], method: :post, url: listing_deal_bids_path(@listing_deal) do |f| %>
     <%= f.error_notification %>
     <%= f.input :amount,
@@ -6,7 +7,7 @@
                 required: true %>
     <%= f.input :description %>
     <div class="form-actions">
-      <%= f.button :submit, class: 'btn btn-primary' %>
+      <%= f.button :submit, "Place bid", class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>
