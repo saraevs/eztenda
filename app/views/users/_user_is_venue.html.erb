@@ -1,6 +1,24 @@
 <h2 class="mb-3">Active tenders</h2>
 <div class="active-tenders mb-3">
-
+  <% if @active_listings.empty? %>
+    <p>You do not have any active tenders!</p>
+    <%= link_to "Create Listing", new_listing_deal_path, target: "_blank", class: "btn btn-primary" %>
+  <% else %>
+    <% @active_listings.each do |listing| %>
+      <% @product = Product.find(listing.product_id) %>
+      <div class="col-4 mb-4 listing-card">
+        <div class="card shadow">
+          <div class="card-body">
+            <p class="card-text">Volume: <%= listing.volume %> of <%= @product.name %></p>
+            <p class="card-text">Current bid: <%= listing.min_amount %></p>
+            <%= link_to listing_deal_path(listing) do %>
+              <button class="btn btn-primary">Details</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
 <h2 class="mb-3">Agreed deals</h2>
 <div class="agreed-deals mb-3">
