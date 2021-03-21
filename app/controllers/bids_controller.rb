@@ -14,7 +14,7 @@ class BidsController < ApplicationController
     if @bid.save
       redirect_to listing_deal_path(@listing_deal)
     else
-      render :new
+      redirect_to listing_deal_path(@listing_deal), alert: "Unable to create listing"
     end
   end
 
@@ -24,6 +24,8 @@ class BidsController < ApplicationController
   def update
     @bid.accepted = true
     @bid.save
+    @listing_deal.completed_at = Date.today
+    @listing_deal.save
     redirect_to listing_deal_path(@listing_deal)
   end
 
