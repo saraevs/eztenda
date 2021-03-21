@@ -9,7 +9,31 @@
 require 'faker'
 require 'date'
 
+categories = ['Beer', 'Cider', 'White Wine', 'Red Wine', 'Champagne', 'Soft Drinks', 'Spirits']
 
+puts 'creating testing users'
+
+harry = User.create({
+  name: 'Harry',
+  email: 'harry@example.com',
+  is_venue: false,
+  password: 'test123',
+  password_confirmation: 'test123',
+  phone_number: '0123456789',
+  address: Faker::Address.full_address
+})
+puts "created #{harry.name} with password: #{harry.password}"
+
+jack = User.create({
+  name: 'Jack Daniels',
+  email: 'jack@example.com',
+  is_venue: true,
+  password: 'test123',
+  password_confirmation: 'test123',
+  phone_number: '0123456789',
+  address: Faker::Address.full_address
+})
+puts "created #{jack.name} with password: #{jack.password}"
 
 puts 'creating products...'
 
@@ -23,11 +47,12 @@ end
 puts 'creating venues...'
 
 4.times do |i|
-  User.create(
+  user = User.create(
     name: Faker::Restaurant.name,
     is_venue: true,
     email: Faker::Internet.email,
     address: Faker::Address.full_address,
+    phone_number: '0123456789',
     password: 'Password1'
     )
 end
@@ -40,6 +65,7 @@ puts 'creating brands...'
     is_venue: false,
     email: Faker::Internet.email,
     address: Faker::Address.full_address,
+    phone_number: '0123456789',
     password: 'Password1'
     )
 end
@@ -54,6 +80,7 @@ puts 'creating listing deals...'
     volume: '12 barrels',
     product_id: rand(1..10),
     user_id: rand(1..4),
+    category: categories.sample()
     )
 end
 
@@ -67,6 +94,7 @@ puts '...'
     volume: '12 barrels',
     product_id: rand(1..10),
     user_id: rand(1..4),
+    category: categories.sample()
     )
 end
 
@@ -90,7 +118,7 @@ description = [
 
 
 10.times do
-  Bid.create({
+  Bid.create!({
     product_id: rand(1..10),
     user_id: rand(5..8),
     listing_deal_id: rand(1..5),

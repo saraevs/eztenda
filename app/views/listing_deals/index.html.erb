@@ -7,15 +7,13 @@
     <h1 class="listing-header">Live Listings</h1>
       <div class="row">
         <% @listing_deals.each do |listing_deal| %>
-          <% @product = Product.find(listing_deal.product_id) %>
           <div class="col-4 col-sm-3">
           <div class="listing-card shadow">
 
             <div class="listing-details">
               <ul id="list">
-                <li><h4><%= link_to listing_deal.user.name, listing_deal_path(listing_deal.id) %></h4></li>
-                <li class="truncate"><strong>Product:</strong> <%= @product.name %></li>
-                <li><strong>Category:</strong> <%= @product.category %>
+                <li><h4><%= link_to listing_deal.user.name, listing_deal_path(listing_deal.id) %></h4></li>           
+                <li><strong>Category:</strong> <%= listing_deal.category %></li>
                   <% case @product.category %>
                     <% when'Beer' %>
                       <i class="fas fa-beer"></i>

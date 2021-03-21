@@ -4,6 +4,7 @@
       <div class="venue-header">
         <h1><%= @listing_deal.user.name %></h1>
       </div>
+      <div class="show-card-content">
       <div class="tender-container">
       <h2>Tender Details</h2>
         <ul>
@@ -11,22 +12,22 @@
             <h5>
               <%= @listing_deal.volume %> of <%= @product.category %>
               <% case @product.category %>
-              <% when'Beer' %>
-                <i class="fas fa-beer"></i>
-              <% when 'Lager' %>
-                <i class="fas fa-beer"></i>
-              <% when 'Cider' %>
-                <i class="fas fa-beer"></i>
-              <% when 'White wine' %>
-                <i class="far fa-wine-glass-alt"></i>
-              <% when 'Red wine' %>
-                <i class="fas fa-wine-glass-alt"></i>
-              <% when 'Champagne' %>
-                <i class="fal fa-glass-champagne"></i>
-              <% when 'Soft drinks' %>
-                <i class="fas fa-cocktail"></i>
-              <% when 'Spirits' %>
-                <i class="fas fa-cocktail"></i>
+                <% when'Beer' %>
+                  <i class="fas fa-beer"></i>
+                <% when 'Lager' %>
+                  <i class="fas fa-beer"></i>
+                <% when 'Cider' %>
+                  <i class="fas fa-beer"></i>
+                <% when 'White wine' %>
+                  <i class="far fa-wine-glass-alt"></i>
+                <% when 'Red wine' %>
+                  <i class="fas fa-wine-glass-alt"></i>
+                <% when 'Champagne' %>
+                  <i class="fal fa-glass-champagne"></i>
+                <% when 'Soft drinks' %>
+                  <i class="fas fa-cocktail"></i>
+                <% when 'Spirits' %>
+                  <i class="fas fa-cocktail"></i>
               <% end %>
             </h5>
           </li>
@@ -51,13 +52,16 @@
               <div class="highest-bidder">
                 (<strong><%= @highest_bid.user.name %></strong> bid on <%= @highest_bid.created_at.strftime("%a %e %b %y") %>)
               </div>
+            <% end %>
+          </div>
+          <div>
               <% if current_user.is_venue == false %>
                 <%= render "./bids/new" %>
               <% end %>
               <% if @listing_deal.user == current_user %>
                 <%= render "all_bids", bids: @bids, listing_deal: @listing_deal %> <!--- if the current user is the venue for this listing --->
               <% end %>
-            <% end %>
+          <% end %>
           </div>
           <div class="listing-deal-show-actions">
             <% if current_user.id == @listing_deal.user.id %>
@@ -68,6 +72,6 @@
           </div>
         </div>
       </div>
-
+    </div>
   </div>
 </div>
