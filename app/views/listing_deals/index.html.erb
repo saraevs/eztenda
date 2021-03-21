@@ -13,7 +13,7 @@
             <div class="listing-details">
               <ul id="list">
                 <li><h4><%= link_to listing_deal.user.name, listing_deal_path(listing_deal.id) %></h4></li>
-                <li><strong>Category:</strong> <%= listing_deal.category %></li>
+                <li><strong>Category:</strong> <%= listing_deal.category %>
                   <% case listing_deal.category %>
                     <% when'Beer' %>
                       <i class="fas fa-beer"></i>
@@ -21,9 +21,9 @@
                       <i class="fas fa-beer"></i>
                     <% when 'Cider' %>
                       <i class="fas fa-beer"></i>
-                    <% when 'White wine' %>
+                    <% when 'White Wine' %>
                       <i class="far fa-wine-glass-alt"></i>
-                    <% when 'Red wine' %>
+                    <% when 'Red Wine' %>
                       <i class="fas fa-wine-glass-alt"></i>
                     <% when 'Champagne' %>
                       <i class="fal fa-glass-champagne"></i>
