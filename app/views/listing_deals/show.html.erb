@@ -7,35 +7,35 @@
       <div class="tender-container">
       <h2>Tender Details</h2>
         <ul>
-          <li>Product: <%= @product.name %></li>
-          <li>Category: <%= @product.category %>
-            <% case @product.category %>
-            <% when'Beer' %>
-              <i class="fas fa-beer"></i>
-            <% when 'Lager' %>
-              <i class="fas fa-beer"></i>
-            <% when 'Cider' %>
-              <i class="fas fa-beer"></i>
-            <% when 'White wine' %>
-              <i class="far fa-wine-glass-alt"></i>
-            <% when 'Red wine' %>
-              <i class="fas fa-wine-glass-alt"></i>
-            <% when 'Champagne' %>
-              <i class="fal fa-glass-champagne"></i>
-            <% when 'Soft drinks' %>
-              <i class="fas fa-cocktail"></i>
-            <% when 'Spirits' %>
-              <i class="fas fa-cocktail"></i>
-            <% end %>
+          <li>
+            <h5>
+              <%= @listing_deal.volume %> of <%= @product.category %>
+              <% case @product.category %>
+              <% when'Beer' %>
+                <i class="fas fa-beer"></i>
+              <% when 'Lager' %>
+                <i class="fas fa-beer"></i>
+              <% when 'Cider' %>
+                <i class="fas fa-beer"></i>
+              <% when 'White wine' %>
+                <i class="far fa-wine-glass-alt"></i>
+              <% when 'Red wine' %>
+                <i class="fas fa-wine-glass-alt"></i>
+              <% when 'Champagne' %>
+                <i class="fal fa-glass-champagne"></i>
+              <% when 'Soft drinks' %>
+                <i class="fas fa-cocktail"></i>
+              <% when 'Spirits' %>
+                <i class="fas fa-cocktail"></i>
+              <% end %>
+            </h5>
           </li>
-          <li>Volume Required: <%= @listing_deal.volume %></li>
-          <li>Start Date: <%= @listing_deal.start_date.strftime("%a %e %b %y") %></li>
-          <li>End Date: <%= @listing_deal.end_date.strftime("%a %e %b %y") %></li>
+          <li>From <strong> <%= @listing_deal.start_date.strftime("%a %e %b %y") %></strong> to <strong><%= @listing_deal.end_date.strftime("%a %e %b %y") %></strong></li>
           <li>Minimum Bid: £<%= @listing_deal.min_amount %></li>
           <li>Other Requirements: <%= @listing_deal.other_requirements %></li>
         </ul>
       </div>
-      <div class="listing-deals-bids">
+      <div class="listing-deals-bids mb-3">
         <h3>Auction</h3>
 
         <% if @listing_deal.bids.pluck('accepted').include?(true) %> <!--- auction is over --->
@@ -43,7 +43,7 @@
         <% else %> <!---- auction is still going ---->
           <div class="bid-top-stats">
             <div class="highest-bid">
-              Highest Bid: <strong>£<%= @highest_bid %></strong>
+              Highest Bid: <strong class="btn btn-primary">£<%= @highest_bid %></strong>
             </div>
             <div class="minimum-bid">
               Minimum Bid: <strong>£<%= @listing_deal.min_amount %></strong>
