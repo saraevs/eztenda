@@ -75,6 +75,7 @@ end
 
 puts 'creating bids...'
 
+counter = 0
 
 description = [
   "Branded glasses",
@@ -90,14 +91,14 @@ description = [
 
 ]
 
-counter = 0
+
 10.times do
-  Bid.create(
+  Bid.create({
     product_id: rand(1..10),
     user_id: rand(5..8),
     listing_deal_id: rand(1..5),
     amount: rand(500..1000),
     description: "#{description[counter]}"
-    )
+    })
   counter += 1
 end
