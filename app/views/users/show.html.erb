@@ -1,8 +1,7 @@
 <div class="container">
-  <div class="row">
-    <h1 class="mt-5">Welcome back, <%= @user.name %></h1>
+  <div class="row user-header">
+    <h1 class="my-5 ">Welcome back, <%= @user.name %></h1>
   </div>
-
   <% if !current_user.is_venue %>
     <%= render "user_is_brand" %>
   <% else %>
