@@ -3,7 +3,8 @@
   <% bids.order(:amount).reverse.each do |bid| %>
     <div class="bid-card">
       <div class="bid-details col-8">
-        <h5>Offer: £<%= bid.amount %></h5>
+        <h5>Bid: £<%= bid.amount %></h5>
+        <p>Offer: <%= bid.description %></p>
         <p>Brand: <%= bid.user.name %></p>
         <p>Product: <%= bid.product.name %></p>
       </div>
