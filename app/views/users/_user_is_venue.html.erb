@@ -6,13 +6,13 @@
   <% else %>
     <% @active_listings.each do |listing| %>
       <% @product = Product.find(listing.product_id) %>
-      <div class="col-4 mb-4 listing-card">
+      <div class="col-4 mb-4">
         <div class="card shadow">
           <div class="card-body">
-            <p class="card-text">Volume: <%= listing.volume %> of <%= @product.name %></p>
-            <p class="card-text">Current bid: <%= listing.min_amount %></p>
+            <p class="card-text">Volume: <%= listing.volume %> of <%= @product.category %></p>
+            <p class="card-text">From: <%= listing.start_date.strftime("%a %e %b %y") %> to <%= listing.end_date.strftime("%a %e %b %y") %></p>
             <%= link_to listing_deal_path(listing) do %>
-              <button class="btn btn-primary">Details</button>
+              <button class="btn btn-primary">See More</button>
             <% end %>
           </div>
         </div>
@@ -22,19 +22,20 @@
 </div>
 <h2 class="mb-3">Agreed deals</h2>
 <div class="agreed-deals mb-3">
-  <% @listing_deals.each do |deal| %>
-    <% @product = Product.find(deal.product_id) %>
-    <div class="col-4 mb-4 listing-card">
-      <div class="card shadow">
-        <div class="card-body">
-          <p class="card-text">Volume: <%= deal.volume %> of <%= @product.name %></p>
-          <p class="card-text">Current bid: <%= deal.min_amount %></p>
-          <%= link_to listing_deal_path(deal) do %>
-            <button class="btn btn-primary">Details</button>
-          <% end %>
+  <% @accepted_listings.each do |listing| %>
+    <% @product = Product.find(listing.product_id) %>
+      <div class="col-4 mb-4">
+        <div class="card shadow">
+          <div class="card-body">
+            <p class="card-text">Product: <%= @product.name %></p>
+            <p class="card-text">Agreed on <%= listing.completed_at.strftime("%a %e %b %y") %></p>
+            <p class="card-text">From: <%= listing.start_date.strftime("%a %e %b %y") %> to <%= listing.end_date.strftime("%a %e %b %y") %></p>
+            <%= link_to listing_deal_path(listing) do %>
+              <button class="btn btn-primary">See More</button>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
   <% end %>
 </div>
 
